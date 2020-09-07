@@ -1,6 +1,6 @@
 #import <Cordova/CDVPlugin.h>
 
-@interface MiPlugin : CDVPlugin {
+@interface SmartIDPG : CDVPlugin {
 }
 
 // Encabezados de las funciones del plugin
