@@ -1,0 +1,12 @@
+{
+  "name": "cordova-plugin-smartid",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-smartid",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "description": "Plugin para utilizar sdk de smartid"
+}

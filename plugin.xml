@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="mi-plugin"
+    version="1.0.0">
+    <name>smart id plugin</name>
+    <description></description>
+    <license>MIT</license>
+    <keywords></keywords>
+    <repo>https://gitlab.com/bdg.sa/banrural-gt-smartid-plugin.git</repo>
+    
+
+    <!-- android -->
+    <platform name="android">
+      <js-module src="www/plugin.js" name="plugin">
+        <runs/>
+
+        <!-- Este es el nombre por el cual se accedera el plugin -->
+        <clobbers target="SmartIDPG" />
+      </js-module>
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="SmartIDPG">
+          <param name="android-package" value="org.banrural.SmartIDPG" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+
+      <source-file src="src/android/org/banrural/SmartIDPG.java" target-dir="src/org/banrural/" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/plugin.js" name="plugin">
+            <runs/>
+            <clobbers target="SmartIDPG" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="SmartIDPG">
+                <param name="ios-package" value="SmartIDPG" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/SmartIDPG.h" />
+        <source-file src="src/ios/SmartIDPG.m" />
+    </platform>
+</plugin>
