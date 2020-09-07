@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="mi-plugin"
+    id="smartid-plugin"
     version="1.0.0">
     <name>smart id plugin</name>
     <description></description>

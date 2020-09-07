@@ -16,19 +16,19 @@ var SmartIDPG = {
 
   unLink: function(channel, session,  successCallback, errorCallback)
   { 
-    exec(successCallback, errorCallback, PLUGIN_NAME, "start", [channel, session]);
+    exec(successCallback, errorCallback, PLUGIN_NAME, "unLink", [channel, session]);
 
   },
 
   link: function(channel, session, successCallback, errorCallback)
   { 
-    exec(successCallback, errorCallback, PLUGIN_NAME, "start", [channel, session]);
+    exec(successCallback, errorCallback, PLUGIN_NAME, "link", [channel, session]);
 
   },
 
   tracking: function(channel, session, activity, successCallback, errorCallback)
   { 
-    exec(successCallback, errorCallback, PLUGIN_NAME, "start", [channel,session,activity]);
+    exec(successCallback, errorCallback, PLUGIN_NAME, "tracking", [channel,session,activity]);
 
   }
 
