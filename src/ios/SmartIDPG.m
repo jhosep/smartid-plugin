@@ -1,7 +1,7 @@
 #import "SmartIDPG.h"
 
 #import <Cordova/CDVAvailability.h>
-
+#import "BANRURAL-Swift.h"
 @implementation SmartIDPG
 
 - (void)pluginInitialize {
