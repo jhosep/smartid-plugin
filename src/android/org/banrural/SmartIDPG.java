@@ -1,7 +1,6 @@
-/**
- */
-package com.example;
+package org.banrural;
 
+import com.develsystems.smartid.SmartId;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -14,26 +13,67 @@ import org.json.JSONException;
 
 import android.util.Log;
 
-import java.util.Date;
-
-public class MiPlugin extends CordovaPlugin {
-  private static final String TAG = "MiPlugin";
+public class SmartIDPG extends CordovaPlugin {
+  private static final String TAG = "SmartIDPG";
 
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-
-    Log.d(TAG, "Inicializando MiPlugin");
+    Log.d(TAG, "Inicializando SmartIDPG");
   }
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-    if(action.equals("saludar")) {
-      // An example of returning data back to the web layer
-       String phrase = args.getString(0);
-      // Echo back the first argument      
-      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Hola todo el... "+phrase);
-      callbackContext.sendPluginResult(result);
+    String mensaje = "";
+    PluginResult result;
+    if (action.equals("start")) {
+        mensaje = initInstance(args);
+    } else if (action.equals("link")) {
+        mensaje = link(args);
+    } else if (action.equals("unLink")) {
+        mensaje = unLink(args);
+    } else if (action.equals("tracking")) {
+        mensaje = tracking(args);
+    } else if (action.equals("saludar")) {
+        mensaje = saludar(args);
     }
+    result = new PluginResult(PluginResult.Status.OK, mensaje);
+    callbackContext.sendPluginResult(result);
     return true;
+  }
+
+  public String saludar(JSONArray args) throws JSONException {
+    String nombre = args.getString(0);
+    String ret = "Hola " + nombre + ", esto es un saludo";
+    return ret;
+  }
+
+  public String initInstance(JSONArray args) throws JSONException {
+    String license = args.getString(0);
+    String user = args.getString(1);
+    boolean isProduction = args.getString(2).equals("false")? false:true;
+    SmartId.initInstance(this.webView.getContext(), license, user, isProduction);
+    return "true";
+  }
+
+  public String link(JSONArray args) throws JSONException {
+    String channel = args.getString(0);
+    String session = args.getString(1);
+    SmartId.getInstance().Link(channel, session);
+    return "true";
+  }
+
+  public String tracking(JSONArray args) throws JSONException {
+    String channel = args.getString(0);
+    String session = args.getString(1);
+    String activity = args.getString(2);
+    SmartId.getInstance().Tracking(channel, session, activity);
+    return "true";
+  }
+
+  public String unLink(JSONArray args) throws JSONException {
+    String channel = args.getString(0);
+    String session = args.getString(1);
+    SmartId.getInstance().UnLink(channel, session);
+    return "true";
   }
 
 }

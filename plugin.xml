@@ -26,6 +26,8 @@
       </config-file>
 
       <source-file src="src/android/org/banrural/SmartIDPG.java" target-dir="src/org/banrural/" />
+      <framework src="src/android/SmartIDPG.gradle" custom="true" type="gradleReference"/>
+      <lib-file src="src/android/lib/smartid-2.0.0.aar"></lib-file>
     </platform>
 
     <!-- ios -->
