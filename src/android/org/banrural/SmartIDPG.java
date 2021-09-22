@@ -34,6 +34,10 @@ public class SmartIDPG extends CordovaPlugin {
         mensaje = tracking(args);
     } else if (action.equals("saludar")) {
         mensaje = saludar(args);
+    } else if (action.equals("securePayment")) {
+        mensaje = securePayment(args);
+    } else if (action.equals("getDeviceInfo")) {
+        mensaje = getDeviceInfo(args);
     }
     result = new PluginResult(PluginResult.Status.OK, mensaje);
     callbackContext.sendPluginResult(result);
@@ -74,6 +78,21 @@ public class SmartIDPG extends CordovaPlugin {
     String session = args.getString(1);
     SmartId.getInstance().UnLink(channel, session);
     return "true";
+  }
+
+  public String securePayment(JSONArray args) throws JSONException {
+    String channel = args.getString(0);
+    String user = args.getString(1);
+    Double amount = args.getDouble(2);
+    String values = args.getString(3);
+    SmartId.getInstance().Payment(channel, user, amount, values);
+    return "true";
+  }
+
+  public String getDeviceInfo(JSONArray args) throws JSONException {
+    String channel = args.getString(0);
+    String session = args.getString(1);
+    return SmartId.getInstance().GetDeviceInfo(channel, session);
   }
 
 }

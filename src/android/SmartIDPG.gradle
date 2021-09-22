@@ -1,13 +1,13 @@
   
 repositories{
     jcenter()
-    flatDir{
-        dirs 'libs'
+    maven {
+        url 'https://mymavenrepo.com/repo/lAMbVehbauvPKM8BB3pB/'
     }
 }
 
 dependencies {
-    compile( name:'smartid-2.0.0', ext:'aar' )
+    implementation 'com.develsystems.banrural:smartid:1.1.0'
 }
 
 android {
