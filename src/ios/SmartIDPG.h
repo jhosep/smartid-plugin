@@ -9,4 +9,7 @@
 - (void) unLink:(CDVInvokedUrlCommand*)command;
 - (void) link:(CDVInvokedUrlCommand*)command;
 - (void) tracking:(CDVInvokedUrlCommand*)command;
+- (void) securePayment:(CDVInvokedUrlCommand*)command;
+- (void) getDeviceInfo:(CDVInvokedUrlCommand*)command;
 @end
+

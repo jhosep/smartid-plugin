@@ -32,6 +32,21 @@ var SmartIDPG = {
 
   }
 
+  securePayment: function(channel, tranType, amount, strJSON ,successCallback, errorCallback)
+  { 
+ 
+    exec(successCallback, errorCallback, PLUGIN_NAME, "securePayment", [channel,tranType,amount,strJSON]);
+
+  }
+
+
+  getDeviceInfo: function(channel, session, successCallback, errorCallback)
+  { 
+    exec(successCallback, errorCallback, PLUGIN_NAME, "getDeviceInfo", [channel,session]);
+
+  }
+
+
 };
 
 module.exports = SmartIDPG;

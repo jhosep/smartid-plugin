@@ -1,7 +1,6 @@
 #import "SmartIDPG.h"
-
 #import <Cordova/CDVAvailability.h>
-#import "BANRURAL-Swift.h"
+#import "Banrural-Swift.h"
 @implementation SmartIDPG
 
 - (void)pluginInitialize {
@@ -90,6 +89,42 @@
 
     BridgeSmartId* smartId= [BridgeSmartId new];
     msg= [smartId trackingSmartIdWithChannel:channel sesion:session activity:activity];
+    CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_OK
+                               messageAsString:msg];
+
+    
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
+{
+
+    NSString* channel = [[command arguments] objectAtIndex:0];
+    NSString* session = [[command arguments] objectAtIndex:1];
+    NSString* msg = @"";
+
+    BridgeSmartId* smartId= [BridgeSmartId new];
+    msg= [smartId getDeviceInfoWithChannel:channel session:session];
+    CDVPluginResult* result = [CDVPluginResult
+                               resultWithStatus:CDVCommandStatus_OK
+                               messageAsString:msg];
+
+    
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+- (void)securePayment:(CDVInvokedUrlCommand*)command
+{
+
+    NSString* channel = [[command arguments] objectAtIndex:0];
+    NSString* tranType = [[command arguments] objectAtIndex:1];
+    NSString* amount = [[command arguments] objectAtIndex:2];
+    NSString* strvalues = [[command arguments] objectAtIndex:3];
+    NSString* msg = @"";
+
+    BridgeSmartId* smartId= [BridgeSmartId new];
+    msg= [smartId securePaymentWithChannel:channel tranType:tranType amount:amount strvalues:strvalues];
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
