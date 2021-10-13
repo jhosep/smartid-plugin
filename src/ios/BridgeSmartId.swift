@@ -58,9 +58,9 @@ import SmartId
         return "true";
     }
     
-    func getDeviceInfo(channel:String, session: String) -> String{
+    func getDeviceInfo(channel:String) -> String{
         let respuesta:  [String : Any];
-        respuesta = SmartId.SID.shared.getDeviceInfo(channel: channel, session: session);
+        respuesta = SmartId.SID.shared.getDeviceInfo(channel: channel, session: "");
         strJsonDispositivo="{";
         respuesta.forEach { (key: String, value: Any) in
             addJsonFormat(key: key,value: value)

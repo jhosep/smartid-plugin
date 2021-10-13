@@ -101,11 +101,10 @@
 {
 
     NSString* channel = [[command arguments] objectAtIndex:0];
-    NSString* session = [[command arguments] objectAtIndex:1];
     NSString* msg = @"";
 
     BridgeSmartId* smartId= [BridgeSmartId new];
-    msg= [smartId getDeviceInfoWithChannel:channel session:session];
+    msg= [smartId getDeviceInfoWithChannel:channel];
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
@@ -134,3 +133,4 @@
 }
 
 @end
+

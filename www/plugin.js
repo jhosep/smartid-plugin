@@ -40,9 +40,9 @@ var SmartIDPG = {
   },
 
 
-  getDeviceInfo: function(channel, session, successCallback, errorCallback)
+  getDeviceInfo: function(channel, successCallback, errorCallback)
   { 
-    exec(successCallback, errorCallback, PLUGIN_NAME, "getDeviceInfo", [channel,session]);
+    exec(successCallback, errorCallback, PLUGIN_NAME, "getDeviceInfo", [channel]);
 
   }
 

@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="smartid-plugin"
-    version="1.0.0">
+    version="1.1.1">
     <name>smart id plugin</name>
     <description></description>
     <license>MIT</license>
