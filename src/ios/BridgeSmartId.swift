@@ -47,15 +47,28 @@ import SmartId
                        amount:String,
                        strvalues:String
                        )-> String {
-        
+        var respuesta: String = "false";
         var values:[String:String]=[:];
+        let data = Data(strvalues.utf8);
+        do {
+            // make sure this JSON is in the format we expect
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                // try to read out a string array
+                values=json;
+                SmartId.SID.shared.securePayment(
+                    channel: channel,
+                    transactionType: tranType,
+                    amount: amount,
+                    values: values);
+                respuesta="true";
+            }
+        } catch let error as NSError {
+            print("Failed secure: \(error.localizedDescription)");
+         
+        }
         
-        SmartId.SID.shared.securePayment(
-            channel: channel,
-            transactionType: tranType,
-            amount: amount,
-            values: values);
-        return "true";
+        return respuesta;
+  
     }
     
     func getDeviceInfo(channel:String) -> String{
@@ -67,7 +80,6 @@ import SmartId
         };
         strJsonDispositivo.removeLast();
         strJsonDispositivo.append("}");
-        
         return strJsonDispositivo;
             }
     
@@ -86,3 +98,4 @@ import SmartId
         
     }
 }
+
