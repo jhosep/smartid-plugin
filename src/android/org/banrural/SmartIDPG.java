@@ -91,7 +91,7 @@ public class SmartIDPG extends CordovaPlugin {
 
   public String getDeviceInfo(JSONArray args) throws JSONException {
     String channel = args.getString(0);
-    String session = args.getString(1);
+    String session = "";// args.getString(1);
     return SmartId.getInstance().GetDeviceInfo(channel, session);
   }
 
